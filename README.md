@@ -1,22 +1,22 @@
-# Lazy local usage
+# Lazy telemetry
 
 is a small tool/server, for storing and collecting stats on various tools you
 use. It will track how many times a cli function is invoked, crashes occuring
 and so on. It will store these locally, until at some point it gets an internet
 connection, and then it will upload them to the server.
 
-Everything is anonymous, and only used by a very tiny process to collect usage
-stats.
+Everything is anonymous, and only used by a very tiny process to collect
+telemetry stats.
 
-There are two different modes. Usage tracking, and error probes.
+There are two different modes. telemetry tracking, and error probes.
 
-## Usage
+## telemetry
 
-Usage tracking:
+telemetry tracking:
 
 ```go
 func main() {
-  if err := usage.Increment("some-app"); err != nil {
+  if err := telemetry.Increment("some-app"); err != nil {
     // returns err, but can be ignored, and will never panic
   }
 
@@ -32,7 +32,7 @@ func main() {
     cli.Execute()
   }
 
-  if err := usage.Monitor("some-app", action); err != nil {
+  if err := telemetry.Monitor("some-app", action); err != nil {
     // Will also count
     panic(err)
   }
@@ -49,12 +49,12 @@ consistency.
 in your .zshrc or cronjob:
 
 ```sh
-local-usage flush # will always return 0, but will log to ~/.local/state/usage/local-usage-cli.log
+lazy-telemetry flush # will always return 0, but will log to ~/.local/state/telemetry/telemetry-cli.log
 ```
 
 ## Architecture
 
-The usage is stored in .local/state/usage.
+The telemetry is stored in .local/state/telemetry.
 
 The output will look like this:
 
