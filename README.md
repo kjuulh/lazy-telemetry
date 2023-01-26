@@ -39,6 +39,15 @@ func main() {
 }
 ```
 
+### Run standalone
+
+```sh
+lazy-telemetry monitor echo something | do stuff
+```
+
+Do note that the above statement will only monitor the
+`echo something`statement. Not the pipe
+
 ### Install the upload
 
 This is not exactly required, but will greatly help getting all the stats
@@ -62,3 +71,9 @@ The output will look like this:
 { "type": "increment", "timestamp": "some-time", "app": "some-app", "args": "app do something" }
 { "type": "telemetry", "timestamp": "some-time", "app": "some-app", "error": "error: something\nstack trace...", "args": "app do something" }
 ```
+
+## Why telemetry
+
+Telemetry has a bad stigma, and this is why this toolkit is intentionally
+minimalistic. It does what it needs to and nothing more. It won't bog your pc
+down, and work on your terms.
