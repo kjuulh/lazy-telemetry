@@ -58,7 +58,7 @@ consistency.
 in your .zshrc or cronjob:
 
 ```sh
-lazy-telemetry flush # will always return 0, but will log to ~/.local/state/telemetry/telemetry-cli.log
+lazy-telemetry flush --server telemetry.kjuulh.io # will always return 0, but will log to ~/.local/state/telemetry/telemetry-cli.log
 ```
 
 ## Architecture
@@ -71,6 +71,9 @@ The output will look like this:
 { "type": "increment", "timestamp": "some-time", "app": "some-app", "args": "app do something" }
 { "type": "telemetry", "timestamp": "some-time", "app": "some-app", "error": "error: something\nstack trace...", "args": "app do something" }
 ```
+
+These are uploaded to a central server. And will become available both as logs
+and as prometheus metrics.
 
 ## Why telemetry
 
