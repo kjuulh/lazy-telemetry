@@ -10,9 +10,9 @@ telemetry stats.
 
 There are two different modes. telemetry tracking, and error probes.
 
-## telemetry
+## Usage
 
-telemetry tracking:
+Usage tracking:
 
 ```go
 func main() {
